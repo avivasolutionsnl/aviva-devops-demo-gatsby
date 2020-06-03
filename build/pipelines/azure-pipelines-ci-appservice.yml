@@ -11,25 +11,30 @@ pool:
 
 steps:
 - task: UseNode@1
+  displayName: Select node version 13.x
   inputs:
     version: '13.x'
     checkLatest: true
 
 - task: Npm@1
+  displayName: Npm install
   inputs:
     command: 'install'
 
 - task: Npm@1
+  displayName: NPM build
   inputs:
     command: 'custom'
     customCommand: 'run build'
 
 - task: CopyFiles@2
+  displayName: Copy web.config
   inputs:
     Contents: 'web.config'
     TargetFolder: '$(System.DefaultWorkingDirectory)/public'
 
 - task: ArchiveFiles@2
+  displayName: Archive files
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/public'
     includeRootFolder: false
@@ -38,6 +43,7 @@ steps:
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
+  displayName: Publish build artifact $(Build.BuildId).zip
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
