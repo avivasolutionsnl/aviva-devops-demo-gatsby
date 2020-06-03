@@ -6,40 +6,41 @@
 trigger:
     - master
     
-    pool:
-        vmImage: 'ubuntu-latest'
+pool:
+    vmImage: 'ubuntu-latest'
 
-    steps:
-    - task: UseNode@1
-        displayName: 'Use Node version'
-        inputs:
-        version: 13.x
-        checkLatest: true
-  
-    - task: Npm@1
-        displayName: 'Install application dependencies'
-        inputs:
-            verbose: false
-  
-    - task: Npm@1
-        displayName: Build
-        inputs:
-            command: custom
-            verbose: false
-            customCommand: 'run build'
+steps:
+- task: UseNode@1
+  inputs:
+    version: '13.x'
+    checkLatest: true
 
-    - task: CopyFiles@2
-        displayName: 'Copy Files to: $(System.DefaultWorkingDirectory)/public'
-        inputs:
-            Contents: web.config
-            TargetFolder: '$(System.DefaultWorkingDirectory)/public'
+- task: Npm@1
+  inputs:
+    command: 'install'
 
-    - task: ArchiveFiles@2
-        displayName: 'Archive files '
-        inputs:
-            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/public'
-            includeRootFolder: false
-  
-    - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact: drop'
-  
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: 'web.config'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/public'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/public'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+
