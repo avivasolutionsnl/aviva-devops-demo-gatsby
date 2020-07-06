@@ -1,0 +1,71 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/breakpoints';
+
+.about {
+  margin: 0 -15px 0 0;
+  padding: 50px;
+  background-color: $red-medium;
+  color: $black;
+
+  @include lg() {
+    margin: 0 25px 0 -25px;
+    padding: 100px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    @include md() {
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+  }
+
+  &__image {
+    width: 100%;
+
+    @include md() {
+      width: calc(40% - 32px);
+      margin: 0 32px 0 0;
+    }
+  }
+
+  &__text {
+    width: 100%;
+
+    @include md() {
+      width: calc(60% - 32px);
+      margin: 0 0 0 32px;
+    }
+  }
+
+  h2 {
+    font-size: 36px;
+
+    @include lg() {
+      font-size: 62px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+
+    @include md() {
+      font-size: 20px;
+    }
+  }
+
+  img {
+    margin-bottom: 24px;
+
+    @include md() {
+      margin-bottom: 0;
+    }
+  }
+
+  .button {
+    display: inline-block;
+  }
+}

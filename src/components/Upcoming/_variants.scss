@@ -1,0 +1,99 @@
+@import '../../assets/scss/variables';
+
+.session {
+  &.green {
+    .session__image {
+      .color {
+        background-color: $green-medium;
+      }
+
+      &:after {
+        background-color: $green-light;
+      }
+    }
+
+    .session__name {
+      border-color: $green-medium;
+    }
+
+    .session__info {
+      li {
+        &:before {
+          color: $green-medium;
+        }
+      }
+    }
+  }
+
+  &.red {
+    .session__image {
+      .color {
+        background-color: $red-medium;
+      }
+
+      &:after {
+        background-color: $red-light;
+      }
+    }
+
+    .session__name {
+      border-color: $red-medium;
+    }
+
+    .session__info {
+      li {
+        &:before {
+          color: $red-medium;
+        }
+      }
+    }
+  }
+
+  &.blue {
+    .session__image {
+      .color {
+        background-color: $blue-medium;
+      }
+
+      &:after {
+        background-color: $blue-light;
+      }
+    }
+
+    .session__name {
+      border-color: $blue-medium;
+    }
+
+    .session__info {
+      li {
+        &:before {
+          color: $blue-medium;
+        }
+      }
+    }
+  }
+
+  &.yellow {
+    .session__image {
+      .color {
+        background-color: $yellow-medium;
+      }
+
+      &:after {
+        background-color: $yellow-light;
+      }
+    }
+
+    .session__name {
+      border-color: $yellow-medium;
+    }
+
+    .session__info {
+      li {
+        &:before {
+          color: $yellow-medium;
+        }
+      }
+    }
+  }
+}

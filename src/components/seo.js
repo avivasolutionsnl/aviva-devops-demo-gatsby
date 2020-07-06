@@ -7,10 +7,10 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import Helmet from "react-helmet"
+import { graphql, useStaticQuery } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, ogImage }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -22,8 +22,7 @@ function SEO({ description, lang, meta, title }) {
           }
         }
       }
-    `
-  )
+    `)
 
   const metaDescription = description || site.siteMetadata.description
 
@@ -46,6 +45,10 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+          property: `og:image`,
+          content: ogImage,
         },
         {
           property: `og:type`,
@@ -73,7 +76,7 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `nl`,
   meta: [],
   description: ``,
 }

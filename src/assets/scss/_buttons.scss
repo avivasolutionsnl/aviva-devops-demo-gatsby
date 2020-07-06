@@ -1,0 +1,38 @@
+.button {
+  padding: 12px 29px;
+  transition: background-color 0.3s ease-in, color 0.3s;
+  text-decoration: none;
+  font-weight: 700;
+  color: $black;
+
+  &--red {
+    background-color: $red-medium;
+
+    @include lg() {
+      &:hover {
+        background-color: $red-light;
+      }
+    }
+  }
+
+  &--green {
+    background-color: $green-medium;
+
+    @include lg() {
+      &:hover {
+        background-color: $green-light;
+      }
+    }
+  }
+
+  &--black {
+    background-color: $black;
+    color: $red-medium;
+
+    @include lg() {
+      &:hover {
+        color: $red-light;
+      }
+    }
+  }
+}

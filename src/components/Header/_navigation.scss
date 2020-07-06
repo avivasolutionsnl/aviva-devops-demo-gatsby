@@ -1,0 +1,41 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/breakpoints';
+
+nav {
+  display: none;
+
+  @include md() {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin-right: 24px;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+
+      @include lg() {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

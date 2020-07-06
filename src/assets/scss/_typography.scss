@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+@import "breakpoints";
+
+* {
+  font-family: $font-family;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 68px;
+
+  @include lg() {
+    font-size: 120px;
+  }
+}
+
+body {
+  font-weight: 400;
+}

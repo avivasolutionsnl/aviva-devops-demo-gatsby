@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: $body-gradient-blue;
+  color: $white;
+}
+
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;
+  max-width: $extralarge-width;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+ul,
+ol {
+  margin: 16px  0;
+  padding-left: 26px;
+  list-style: none;
+
+  li {
+    line-height: 1;
+
+    &:before {
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+      content: "\2022";
+      font-size: 26px;
+      font-weight: bold;
+      color: $green-medium;
+    }
+  }
+}
+
+.background {
+  &__rectangle {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform: translate(0, -50%);
+      background: url('../../assets/images/rectangle.svg') no-repeat left top;
+      content: '';
+
+      @include md() {
+        top: -100px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background-size: 100% auto;
+      }
+
+      @include xl() {
+        width: 80%;
+      }
+    }
+
+    &.reversed {
+      &:before {
+        transform: translate(0, -50%) scaleX(-1);
+
+        @include md() {
+          transform: translate(-50%, 0) scaleX(-1);
+        }
+      }
+    }
+  }
+}
+
+.notfound {
+  a {
+    color: $white;
+  }
+}

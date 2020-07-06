@@ -1,0 +1,63 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/breakpoints';
+
+.reasons {
+  &__grid {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    @include md() {
+      flex-flow: row wrap;
+    }
+  }
+
+
+  &__item {
+    width: 100%;
+    margin: 0 16px 24px 16px;
+
+    @include md() {
+      width: calc(100% / 3 - 32px);
+      margin: 0 16px 24px 16px;
+    }
+  }
+
+  h2 {
+    margin-bottom: 42px;
+    font-size: 45px;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 24px;
+    color: $green-medium;
+  }
+
+  img {
+    margin-bottom: 24px;
+
+    @include md() {
+      margin: 0;
+    }
+  }
+
+  svg {
+    margin-bottom: 16px;
+
+    path {
+      fill: $yellow-medium;
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin: 24px 0 100px;
+
+    @include lg() {
+      margin: 24px 0 200px;
+    }
+  }
+}

@@ -1,16 +1,29 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `by Aviva Solutions`,
+    description: `Codestof Talks helpen je aan meer context en inzichten waarmee je jouw keuzes, skills en werkwijze als developer verder ontwikkelt.`,
+    author: `Aviva Solutions`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
+    {
+      resolve: `@kentico/gatsby-source-kontent`,
+      options: {
+        deliveryClientConfig: {
+          projectId: `51b4d835-66c1-00d7-0fd2-63552d757d08`,
+          typeResolvers: [],
+        },
+        languageCodenames: [
+          `default`,
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -18,13 +31,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `codestof`,
+        short_name: `codestof`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#2909A5`,
+        theme_color: `#2909A5`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/AvivaSolutions.svg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

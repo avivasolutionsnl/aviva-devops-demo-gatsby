@@ -1,51 +1,35 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import Header from "./Header/header"
+import Footer from "./Footer/footer"
+import "../assets/scss/main.scss"
+import "animate.css/animate.min.css"
 
-import Header from "./header"
-import "./layout.css"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import * as Icons from "@fortawesome/pro-regular-svg-icons"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+// Map all icons from FontAwesome
+const iconList = Object
+  .keys(Icons)
+  .filter(key => key !== "far" && key !== "prefix")
+  .map(icon => Icons[icon])
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
+library.add(...iconList)
+
+if (typeof window !== "undefined") {
+  // eslint-disable-next-line global-require
+  require("smooth-scroll")("a[href*=\"#\"]")
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Header/>
+      <main>
+        {children}
+      </main>
+      <Footer/>
+    </>
+  )
 }
 
 export default Layout

@@ -1,0 +1,41 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/breakpoints';
+
+.upcoming {
+  margin: 0 0 100px;
+  padding: 20px;
+  background-color: $white;
+  color: $black;
+
+  @include lg() {
+    padding: 90px 150px;
+  }
+
+  &__intro {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 42px;
+    text-align: center;
+
+    h2 {
+      font-size: 58px;
+      text-transform: uppercase;
+
+      @include lg() {
+        letter-spacing: 20px;
+      }
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    @include md() {
+      flex-flow: row nowrap;
+    }
+  }
+}
