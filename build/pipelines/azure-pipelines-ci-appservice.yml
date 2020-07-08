@@ -10,6 +10,14 @@ pool:
     vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: RestoreAndSaveCache@1
+  inputs:
+    keyfile: '**/package-lock.json, !**/node_modules/**/package-lock.json, !**/.*/**/package-lock.json'
+    targetfolder: '**/node_modules, !**/node_modules/**/node_modules'
+    vstsFeed: '7c01f8a8-30fd-46ba-8788-604a1c027c9d'
+    platformIndependent: true
+
 - task: UseNode@1
   displayName: Select node version 13.x
   inputs:
