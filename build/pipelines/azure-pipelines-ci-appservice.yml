@@ -27,7 +27,7 @@ steps:
 
 - task: Npm@1
   displayName: Npm install
-  condition: ne(variables['CacheRestored'], 'true')
+  condition: ne(variables.CACHE_RESTORED, 'true')
   inputs:
     command: 'install'
 
