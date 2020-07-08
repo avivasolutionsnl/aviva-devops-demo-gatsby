@@ -9,14 +9,22 @@ trigger:
 pool:
     vmImage: 'ubuntu-latest'
 
-steps:
+variables:
+  npm_config_cache: $(Pipeline.Workspace)/.npm
 
+steps:
 - task: RestoreAndSaveCache@1
   inputs:
     keyfile: '**/package-lock.json, !**/node_modules/**/package-lock.json, !**/.*/**/package-lock.json'
     targetfolder: '**/node_modules, !**/node_modules/**/node_modules'
     vstsFeed: '7c01f8a8-30fd-46ba-8788-604a1c027c9d'
     platformIndependent: true
+
+- task: Cache@2
+  inputs:
+    key: 'npm | "$(Agent.OS)" | package-lock.json'
+    path: '$(npm_config_cache)'
+    restoreKeys: 'npm | "$(Agent.OS)"'
 
 - task: UseNode@1
   displayName: Select node version 13.x
